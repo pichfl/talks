@@ -1,0 +1,20 @@
+html {
+	box-sizing: border-box;
+	text-size-adjust: none;
+}
+
+* {
+	&,
+	&:before,
+	&:after {
+		box-sizing: inherit;
+	}
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: mix(#000, #263364, 10%);
+	color: #fff;
+}

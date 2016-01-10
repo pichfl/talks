@@ -1,0 +1,13 @@
+---
+title:
+---
+
+{{> top}}
+
+<ul>
+	{{#each file.nav.root.children}}
+		<li><a href="/{{href}}">{{title}}</a></li>
+	{{/each}}
+</ul>
+
+{{> end}}

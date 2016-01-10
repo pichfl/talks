@@ -102,7 +102,7 @@ task('publish', series('build', () => {
 	.pipe(ghPages({
 		message: argv.m
 	}));
-}, 'clean-publish'));
+}, parallel('clean', 'clean-publish')));
 
 task('watch', () => {
 	browserSync.init({

@@ -1,0 +1,3 @@
+@function fs($px) {
+	@return $px/1280px * 100vw;
+}

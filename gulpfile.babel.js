@@ -1,6 +1,7 @@
 import autoprefixer from 'autoprefixer';
 import argv from './gulp/argv';
 import browserSync from './gulp/browser-sync';
+import cssnano from 'cssnano';
 import data from 'gulp-data';
 import del from 'del';
 import eslint from 'gulp-eslint';
@@ -28,17 +29,28 @@ task('styles', () => {
 	.pipe(sass().on('error', sass.logError))
 	.pipe(postcss([
 		autoprefixer({
-			browsers: ['last 3 versions'],
+			browsers: ['last 2 versions'],
 		}),
 		mqpacker({
 			sort: true,
 		}),
+		cssnano({
+			autoprefixer: false,
+		})
 	]))
 	.pipe(dest('dist/assets'));
 });
 
-task('content', () => {
-	return src('src/content/**/*.hbs')
+task('content-assets', function() {
+	return src([
+		'content/**/*',
+		'!content/**/*.hbs',
+	])
+	.pipe(dest('dist'));
+});
+
+task('content', parallel('content-assets', () => {
+	return src('content/**/*.hbs')
 	.pipe(rename(p => {
 			p.extname = '.html';
 		}))
@@ -61,10 +73,10 @@ task('content', () => {
 		},
 	}))
 	.pipe(dest('dist'));
-});
+}));
 
 task('static', function() {
-	return src('static/**/*')
+	return src('src/static/**/*')
 	.pipe(dest('dist'));
 });
 
@@ -96,7 +108,7 @@ task('watch', () => {
 	browserSync.init({
 		ghostMode: false,
 		server: {
-			baseDir: ['dist', 'static'],
+			baseDir: ['dist', 'src/static'],
 		},
 		notify: false,
 		injectChanges: false,
@@ -104,7 +116,7 @@ task('watch', () => {
 	});
 
 	watch([
-		'src/content/**/*.hbs',
+		'content/**/*',
 		'src/partials/**/*.hbs',
 		'src/helpers/**/*.js'
 	], series('content', browserSync.reload));

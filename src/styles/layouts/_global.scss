@@ -11,10 +11,76 @@ html {
 	}
 }
 
-html, body {
+* {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background: mix(#000, #263364, 10%);
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	line-height: 1.5;
+	color: inherit;
+}
+
+html, body {
+	background: mix(#000, $c1, 10%);
+	color: mix(#fff, $c1, 85%);
+	font: 400 30px/30px 'Gotham Narrow', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 2em 0 0.25em;
+	font-family: 'Sentinel', Goergia, serif;
+	font-weight: 700;
+	font-size: fs(50px);
 	color: #fff;
+}
+
+h1 {
+	margin: 0 auto;
+	font-size: fs(90px);
+	line-height: 0.8;
+	font-weight: 700;
+	text-align: center;
+
+	+ p {
+		text-align: center;
+	}
+}
+
+strong, b {
+	font-weight: 700;
+}
+
+em, i {
+	font-style: italic;
+}
+
+ul, ol, p {
+	max-width: 72em;
+}
+
+a {
+	&, &:link, &:visited {
+		color: inherit;
+	}
+
+	&:focus, &:hover, &:active {
+		color: inherit;
+	}
+}
+
+li {
+	margin: 0 0 0.25em;
+}
+
+ul li {
+	list-style: none;
+
+	&:before {
+		display: inline-block;
+		width: 0.9em;
+		margin-left: -0.9em;
+		content: '–';
+	}
 }

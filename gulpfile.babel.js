@@ -1,28 +1,69 @@
-import autoprefixer from 'autoprefixer';
 import argv from './gulp/argv';
+import autoprefixer from 'autoprefixer';
+import babel from 'rollup-plugin-babel';
 import browserSync from './gulp/browser-sync';
+import buffer from 'vinyl-buffer';
+import cjs from 'rollup-plugin-commonjs';
 import cssnano from 'cssnano';
 import data from 'gulp-data';
 import del from 'del';
 import eslint from 'gulp-eslint';
 import ghPages from 'gulp-gh-pages';
+import gulpif from 'gulp-if';
 import handlebars from 'gulp-hb';
 import matter from 'gray-matter';
 import mqpacker from 'css-mqpacker';
 import nav from 'gulp-nav';
+import npm from 'rollup-plugin-npm';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import RevAll from 'gulp-rev-all';
 import sass from 'gulp-sass';
+import source from 'vinyl-source-stream';
+import sourcemaps from 'gulp-sourcemaps';
+import uglify from 'rollup-plugin-uglify';
 import { dest, lastRun, parallel, series, src, task, watch } from 'gulp';
+import { rollup } from 'rollup';
 
+// Tasks
 task('clean', () => del(['./dist']));
 task('clean-publish', () => del(['./.publish']));
 
-task('scripts', () => {
-	return src('src/scripts/index.js')
-	.pipe(dest('dist/assets'));
+task('codestyle', () => {
+	return src('src/scripts/**/*.js')
+	.pipe(eslint())
+	.pipe(eslint.format());
 });
+
+task('scripts', parallel('codestyle', function bundler() {
+	return rollup({
+		entry: 'src/scripts/main.js',
+		plugins: [
+			npm({
+				jsnext: true,
+				main: true,
+				browser: true,
+				builtins: false,
+			}),
+			cjs(),
+			babel({
+				exclude: 'node_modules/**',
+				runtimeHelpers: true,
+				babelrc: false,
+				presets: [
+					'es2015-rollup',
+					'stage-0',
+				],
+			}),
+			uglify(),
+		],
+		sourceMap: true,
+	}).then(bundle => bundle.write({
+		format: 'cjs',
+		dest: 'dist/assets/bundle.js',
+		sourceMap: true,
+	}));
+}));
 
 task('styles', () => {
 	return src('src/styles/main.scss')

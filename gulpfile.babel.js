@@ -2,14 +2,12 @@ import argv from './gulp/argv';
 import autoprefixer from 'autoprefixer';
 import babel from 'rollup-plugin-babel';
 import browserSync from './gulp/browser-sync';
-import buffer from 'vinyl-buffer';
 import cjs from 'rollup-plugin-commonjs';
 import cssnano from 'cssnano';
 import data from 'gulp-data';
 import del from 'del';
 import eslint from 'gulp-eslint';
 import ghPages from 'gulp-gh-pages';
-import gulpif from 'gulp-if';
 import handlebars from 'gulp-hb';
 import matter from 'gray-matter';
 import mqpacker from 'css-mqpacker';
@@ -19,10 +17,8 @@ import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import RevAll from 'gulp-rev-all';
 import sass from 'gulp-sass';
-import source from 'vinyl-source-stream';
-import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'rollup-plugin-uglify';
-import { dest, lastRun, parallel, series, src, task, watch } from 'gulp';
+import { dest, parallel, series, src, task, watch } from 'gulp';
 import { rollup } from 'rollup';
 
 // Tasks
@@ -30,7 +26,11 @@ task('clean', () => del(['./dist']));
 task('clean-publish', () => del(['./.publish']));
 
 task('codestyle', () => {
-	return src('src/scripts/**/*.js')
+	return src([
+		'src/**/*.js',
+		'gulpfile.babel.js',
+		'gulp/**/*.js',
+	])
 	.pipe(eslint())
 	.pipe(eslint.format());
 });
@@ -77,12 +77,12 @@ task('styles', () => {
 		}),
 		cssnano({
 			autoprefixer: false,
-		})
+		}),
 	]))
 	.pipe(dest('dist/assets'));
 });
 
-task('content-assets', function() {
+task('content-assets', function () {
 	return src([
 		'content/**/*',
 		'!content/**/*.hbs',
@@ -93,8 +93,8 @@ task('content-assets', function() {
 task('content', parallel('content-assets', () => {
 	return src('content/**/*.hbs')
 	.pipe(rename(p => {
-			p.extname = '.html';
-		}))
+		p.extname = '.html';
+	}))
 	.pipe(data(file => {
 		const content = matter(String(file.contents));
 
@@ -116,7 +116,7 @@ task('content', parallel('content-assets', () => {
 	.pipe(dest('dist'));
 }));
 
-task('static', function() {
+task('static', function () {
 	return src('src/static/**/*')
 	.pipe(dest('dist'));
 });
@@ -141,7 +141,7 @@ task('publish', series('build', () => {
 	return src('dist/**/*')
 	.pipe(revAll.revision())
 	.pipe(ghPages({
-		message: argv.m
+		message: argv.m,
 	}));
 }, parallel('clean', 'clean-publish')));
 
@@ -159,8 +159,8 @@ task('watch', () => {
 	watch([
 		'content/**/*',
 		'src/partials/**/*.hbs',
-		'src/helpers/**/*.js'
-	], series('content', browserSync.reload));
+		'src/helpers/**/*.js',
+	], parallel('codestyle', series('content', browserSync.reload)));
 	watch('src/styles/**/*.scss', series('styles', browserSync.reload));
 	watch('src/scripts/**/*.js', parallel('scripts'));
 });

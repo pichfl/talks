@@ -9,4 +9,4 @@ module.exports = function (format, date) {
 	}
 
 	return new Handlebars.SafeString(m.format(format));
-}
+};

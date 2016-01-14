@@ -23,7 +23,7 @@ html {
 }
 
 html, body {
-	background: mix(#000, $c1, 10%);
+	background: mix(#000, $c1, 10%) center no-repeat;
 	color: mix(#fff, $c1, 85%);
 	font: 400 30px/30px 'Gotham Narrow', sans-serif;
 }

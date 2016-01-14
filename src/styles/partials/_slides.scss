@@ -2,19 +2,9 @@
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	overflow-x: hidden;
-
-	-webkit-scroll-snap-points-y: repeat(100vh);
-	-webkit-scroll-snap-type: mandatory;
-
-	-moz-scroll-snap-points-y: repeat(100vh);
-	-moz-scroll-snap-type: mandatory;
-
-	scroll-snap-points-y: repeat(100vh);
-	scroll-snap-type: mandatory;
+	overflow: hidden;
 
 	section {
-		position: relative;
 		width: 100%;
 		height: 100vh;
 		padding: 50px;
@@ -23,6 +13,9 @@
 		align-items: center;
 		justify-content: center;
 		align-content: center;
+		background: mix(#000, $c1, 10%);
+		z-index: 1;
+		transition: all 0.3s ease-in-out;
 
 		> * {
 			width: 100%;
@@ -38,5 +31,19 @@
 		font-size: 14px;
 		text-align: center;
 		color: mix(#fff, $c1, 50%);
+	}
+}
+
+.js .slides {
+	section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+
+		&:target {
+			z-index: 10;
+			opacity: 1;
+		}
 	}
 }

@@ -1,0 +1,71 @@
+// Based on Oceanic Next
+
+// Greys
+$base00: #1b2b34; // darkest
+$base01: #343d46;
+$base02: #4f5b66;
+$base03: #65737e;
+$base04: #a7adba;
+$base05: #c0c5ce;
+$base06: #cdd3de;
+$base07: #d8dee9; // lightest
+
+// Colors
+$base08: #ec5f67; // red
+$base09: #f99157; // orange
+$base0A: #fac863; // yellow
+$base0B: #99c794; // lime
+$base0C: #5fb3b3; // aqua
+$base0D: #6699cc; // blue
+$base0E: #c594c5; // purple
+$base0F: #ab7967; // brown
+
+pre {
+	background: $base00;
+	padding: 0.5em 1em;
+}
+
+.hljs {
+	&-keyword           { color: $base07; }
+	&-built_in          { color: $base07; }
+	&-type              { color: $base07; }
+	&-literal           { color: $base0B; }
+	&-number            { color: $base09; }
+	&-regexp            { color: $base07; }
+	&-string            { color: $base0B; }
+	&-subst             { color: $base07; }
+	&-symbol            { color: $base07; }
+	&-class             { color: $base07; }
+	&-function          { color: $base07; }
+	&-title             { color: $base07; }
+	&-params            { color: $base07; }
+	&-comment           { color: $base07; }
+	&-doctag            { color: $base07; }
+	&-meta              { color: $base05; }
+	&-meta-keyword      { color: $base07; }
+	&-meta-string       { color: $base07; }
+	&-section           { color: $base07; }
+	&-tag               { color: $base07; }
+	&-name              { color: $base07; }
+	&-builtin-name      { color: $base07; }
+	&-attr              { color: $base08; }
+	&-attribute         { color: $base07; }
+	&-variable          { color: $base07; }
+	&-bullet            { color: $base0B; }
+	&-code              { color: $base07; }
+	&-emphasis          { color: $base07; }
+	&-strong            { color: $base07; }
+	&-formula           { color: $base07; }
+	&-link              { color: $base07; }
+	&-quote             { color: $base07; }
+	&-selector-tag      { color: $base07; }
+	&-selector-id       { color: $base07; }
+	&-selector-class    { color: $base07; }
+	&-selector-attr     { color: $base07; }
+	&-selector-pseudo   { color: $base07; }
+	&-Templates         { color: $base07; }
+	&-template-tag      { color: $base07; }
+	&-template-variable { color: $base07; }
+	&-addition          { color: $base07; }
+	&-deletion          { color: $base07; }
+}

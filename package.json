@@ -39,6 +39,7 @@
     "gulp-rev-all": "^0.8.22",
     "gulp-sass": "^2.1.1",
     "gulp-util": "^3.0.7",
+    "highlight.js": "^9.1.0",
     "marked": "^0.3.5",
     "minimist": "^1.2.0",
     "moment": "^2.11.1",

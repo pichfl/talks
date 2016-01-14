@@ -1,8 +1,17 @@
 import marked from 'marked';
 import Handlebars from 'handlebars';
+import { highlight, highlightAuto } from 'highlight.js';
 
 marked.setOptions({
-	smartypants: true
+	smartypants: true,
+
+	highlight(code, lang) {
+		if (lang) {
+			return highlight(lang, code).value;
+		}
+
+		return highlightAuto(code).value;
+	},
 });
 
 module.exports = function markdown(context) {
@@ -11,12 +20,12 @@ module.exports = function markdown(context) {
 
 	if (indent) {
 		indent = JSON.stringify(indent[0]);
-		indent = indent.substr(1,indent.length-2);
+		indent = indent.substr(1, indent.length - 2);
 
-		const re = new RegExp('^'+indent,'gm')
+		const re = new RegExp(`^${indent}`, 'gm');
 
 		text = text.replace(re, '');
 	}
 
 	return new Handlebars.SafeString(marked(text));
-}
+};

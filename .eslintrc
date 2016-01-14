@@ -39,3 +39,6 @@
     indent:
       - 1
       - "tab"
+    no-param-reassign:
+      - 2
+      - props: false

@@ -23,6 +23,10 @@ $base0F: #ab7967; // brown
 pre {
 	background: $base00;
 	padding: 0.5em 1em;
+
+	+ * {
+		margin-top: 1em;
+	}
 }
 
 .hljs {
@@ -39,7 +43,7 @@ pre {
 	&-function          { color: $base07; }
 	&-title             { color: $base07; }
 	&-params            { color: $base07; }
-	&-comment           { color: $base07; }
+	&-comment           { color: $base03; }
 	&-doctag            { color: $base07; }
 	&-meta              { color: $base05; }
 	&-meta-keyword      { color: $base07; }

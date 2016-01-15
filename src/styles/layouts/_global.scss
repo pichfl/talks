@@ -29,11 +29,15 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 2em 0 0.25em;
+	margin: 0 0 0.25em;
 	font-family: 'Sentinel', Goergia, serif;
 	font-weight: 700;
 	font-size: fs(50px);
 	color: #fff;
+
+	* + & {
+		margin-top: 2em;
+	}
 }
 
 h1 {

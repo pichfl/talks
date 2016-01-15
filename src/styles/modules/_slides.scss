@@ -43,8 +43,9 @@
 	}
 }
 
-.card--title {
+.slides__slide--title {
 	display: flex;
 	flex-flow: nowrap column;
 	justify-content: center;
+	text-align: center;
 }

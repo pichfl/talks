@@ -9,6 +9,7 @@ import del from 'del';
 import eslint from 'gulp-eslint';
 import ghPages from 'gulp-gh-pages';
 import handlebars from 'gulp-hb';
+import htmlmin from 'gulp-htmlmin';
 import matter from 'gray-matter';
 import mqpacker from 'css-mqpacker';
 import nav from 'gulp-nav';
@@ -82,7 +83,7 @@ task('styles', () => {
 	.pipe(dest('dist/assets'));
 });
 
-task('content-assets', function () {
+task('content-assets', function contentAssets() {
 	return src([
 		'content/**/*',
 		'!content/**/*.hbs',
@@ -96,11 +97,11 @@ task('content', parallel('content-assets', () => {
 		p.extname = '.html';
 	}))
 	.pipe(data(file => {
-		const content = matter(String(file.contents));
+		const fm = matter(String(file.contents));
 
-		file.contents = new Buffer(content.content);
+		file.contents = new Buffer(fm.content);
 
-		return content.data;
+		return fm.data;
 	}))
 	.pipe(nav({
 		skips: 'ignore',
@@ -112,11 +113,24 @@ task('content', parallel('content-assets', () => {
 		data: {
 			argv,
 		},
+		dataEach(context, file) {
+			Object.keys(file.data).forEach(key => {
+				context[key] = file.data[key];
+
+				delete file.data[key];
+				delete context.file.data[key];
+			});
+
+			return context;
+		},
+	}))
+	.pipe(htmlmin({
+		collapseWhitespace: true,
 	}))
 	.pipe(dest('dist'));
 }));
 
-task('static', function () {
+task('static', function files() {
 	return src('src/static/**/*')
 	.pipe(dest('dist'));
 });

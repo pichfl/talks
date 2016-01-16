@@ -10,9 +10,9 @@
 	{{/if}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/assets/main.css">
-	{{#if file.data.style}}
-	<style>{{file.data.style}}</style>
+	{{#if style}}
+	<style>{{style}}</style>
 	{{/if}}
 </head>
-<body>
+<body{{#if bodyClass}} class="{{bodyClass}}"{{/if}}>
 	<div class="site">

@@ -1,0 +1,32 @@
+.index {
+	h1 {
+		$offset: 2.25em;
+
+		padding-top: 20vh;
+		padding-right: $offset;
+		font-size: 15vh;
+		line-height: 0.55;
+		text-rendering: optimizeLegibility;
+		font-variant-ligatures: common-ligatures;
+		font-style: italic;
+
+		span {
+			display: block;
+			padding-left: $offset;
+		}
+	}
+
+	p, nav {
+		width: 28em;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	ul {
+		margin-top: 0.75em;
+	}
+
+	li {
+		margin-bottom: 0.25em;
+	}
+}

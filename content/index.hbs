@@ -1,13 +1,19 @@
 ---
-title:
+bodyClass: index
 ---
 
 {{> top}}
 
-<ul>
-	{{#each file.nav.root.children}}
-		<li><a href="./{{href}}">{{title}}</a></li>
-	{{/each}}
-</ul>
+<h1>pichfl <span>talks</span></h1>
+
+<p>So here are a few of my presentations.</p>
+
+<nav>
+	<ul>
+		{{#each nav.root.children}}
+			<li><a href="./{{href}}">{{title}}</a></li>
+		{{/each}}
+	</ul>
+</nav>
 
 {{> end}}

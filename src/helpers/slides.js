@@ -1,5 +1,6 @@
-import marked from 'marked';
 import Handlebars from 'handlebars';
+import marked from 'marked';
+import typogr from 'typogr';
 import { highlight, highlightAuto } from 'highlight.js';
 
 marked.setOptions({
@@ -37,16 +38,6 @@ marked.setOptions({
  */
 module.exports = function markdown(context) {
 	let text = context.fn(this);
-	let indent = text.match(/^\s+/);
-
-	if (indent) {
-		indent = JSON.stringify(indent[0]);
-		indent = indent.substr(1, indent.length - 2);
-
-		const re = new RegExp(`^${indent}`, 'gm');
-
-		text = text.replace(re, '');
-	}
 
 	const splitted = text.trim().split(/(====\s#.*\n)/im);
 	const slides = [];
@@ -66,7 +57,7 @@ module.exports = function markdown(context) {
 	text = slides.map((slide, index) => {
 		const hash = slide.hash || `slide-${index}`;
 		const type = 'slides__slide' + (slide.type ? `--${slide.type}` : '');
-		const content = marked(slide.content);
+		const content = typogr(marked(slide.content)).typogrify();
 
 		return `			<section id="${hash}" class="${type}">
 				${content}

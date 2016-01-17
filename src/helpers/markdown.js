@@ -1,5 +1,6 @@
-import marked from 'marked';
 import Handlebars from 'handlebars';
+import marked from 'marked';
+import typogr from 'typogr';
 import { highlight, highlightAuto } from 'highlight.js';
 
 marked.setOptions({
@@ -27,5 +28,5 @@ module.exports = function markdown(context) {
 		text = text.replace(re, '');
 	}
 
-	return new Handlebars.SafeString(marked(text));
+	return new Handlebars.SafeString(typogr(marked(text)).typogrify());
 };

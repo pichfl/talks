@@ -23,32 +23,48 @@ html {
 }
 
 html, body {
-	background: mix(#000, $c1, 10%) center no-repeat;
-	color: mix(#fff, $c1, 85%);
-	font: 400 30px/30px 'Gotham Narrow', sans-serif;
+	background: $base01;
+	color: #fff;
+	font: 400 28px/30px $sans;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.25em;
-	font-family: 'Sentinel', Goergia, serif;
+	font-family: $serif;
 	font-weight: 700;
-	font-size: fs(50px);
+	color: $base07;
+}
+
+h1 {
+	margin: 0 auto;
+	font-size: fs(90px);
+	line-height: 0.8em;
+	font-weight: 700;
+	text-align: center;
 	color: #fff;
+
+	* + & {
+		margin-top: 2em;
+	}
+
+	+ p {
+		text-align: center;
+	}
+}
+
+h2 {
+	font-size: fs(50px);
 
 	* + & {
 		margin-top: 2em;
 	}
 }
 
-h1 {
-	margin: 0 auto;
-	font-size: fs(90px);
-	line-height: 0.8;
-	font-weight: 700;
-	text-align: center;
+h3 {
+	font-size: 1.1em;
 
-	+ p {
-		text-align: center;
+	* + & {
+		margin-top: 1em;
 	}
 }
 
@@ -60,8 +76,10 @@ em, i {
 	font-style: italic;
 }
 
-ul, ol, p {
-	max-width: 72em;
+.site {
+	max-width: 45em;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 a {
@@ -75,7 +93,11 @@ a {
 }
 
 li {
-	margin: 0 0 0.25em;
+	margin: 0 0 0.75em;
+
+	li {
+		margin-left: 1em;
+	}
 }
 
 ul li {
@@ -86,5 +108,26 @@ ul li {
 		width: 0.9em;
 		margin-left: -0.9em;
 		content: '–';
+		color: $base04;
+	}
+}
+
+blockquote {
+	position: relative;
+	font-style: italic;
+	font-family: $serif;
+	font-weight: normal;
+	margin: 0 0 1em;
+
+	&:before {
+		font-size: 4em;
+		font-weight: bold;
+		font-style: normal;
+		content: '“';
+		position: absolute;
+		top: -0.5em;
+		left: -0.4em;
+		color: $base03;
+		z-index: -1;
 	}
 }

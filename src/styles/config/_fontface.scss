@@ -25,3 +25,31 @@
 	font-style: italic;
 	src: local(GothamNarrow-BoldItalic);
 }
+
+@font-face {
+	font-family: Sentinel;
+	font-weight: 400;
+	font-style: normal;
+	src: local(Sentinel-Book);
+}
+
+@font-face {
+	font-family: Sentinel;
+	font-weight: 400;
+	font-style: italic;
+	src: local(Sentinel-BookItalic);
+}
+
+@font-face {
+	font-family: Sentinel;
+	font-weight: 700;
+	font-style: normal;
+	src: local(Sentinel-Bold);
+}
+
+@font-face {
+	font-family: Sentinel;
+	font-weight: 700;
+	font-style: italic;
+	src: local(Sentinel-BoldItalic);
+}

@@ -176,7 +176,7 @@ task('watch', () => {
 		'src/helpers/**/*.js',
 	], parallel('codestyle', series('content', browserSync.reload)));
 	watch('src/styles/**/*.scss', series('styles', browserSync.reload));
-	watch('src/scripts/**/*.js', parallel('scripts'));
+	watch('src/scripts/**/*.js', parallel('scripts', browserSync.reload));
 });
 
 task('default', series('build', 'watch'));

@@ -1,44 +1,44 @@
 ---
-  parser: "babel-eslint"
-  root: true
-  extends: airbnb
-  env:
-    node: true
-    es6: true
-  ecmaFeatures:
-    arrowFunctions: true
-    binaryLiterals: true
-    blockBindings: true
-    classes: true
-    defaultParams: true
-    destructuring: true
-    forOf: true
-    generators: true
-    modules: true
-    objectLiteralComputedProperties: true
-    objectLiteralDuplicateProperties: true
-    objectLiteralShorthandMethods: true
-    objectLiteralShorthandProperties: true
-    octalLiterals: true
-    regexUFlag: true
-    regexYFlag: true
-    restParams: true
-    spread: true
-    superInFunctions: true
-    templateStrings: true
-    unicodeCodePointEscapes: true
-    globalReturn: true
-    experimentalObjectRestSpread: true
-  rules:
-    comma-dangle:
-      - 2
-      - "always-multiline"
-    func-names: 0
-    no-console: 0
-    strict: 0
-    indent:
-      - 1
-      - "tab"
-    no-param-reassign:
-      - 2
-      - props: false
+parser: "babel-eslint"
+root: true
+extends: airbnb
+env:
+  node: true
+  es6: true
+ecmaFeatures:
+  arrowFunctions: true
+  binaryLiterals: true
+  blockBindings: true
+  classes: true
+  defaultParams: true
+  destructuring: true
+  forOf: true
+  generators: true
+  modules: true
+  objectLiteralComputedProperties: true
+  objectLiteralDuplicateProperties: true
+  objectLiteralShorthandMethods: true
+  objectLiteralShorthandProperties: true
+  octalLiterals: true
+  regexUFlag: true
+  regexYFlag: true
+  restParams: true
+  spread: true
+  superInFunctions: true
+  templateStrings: true
+  unicodeCodePointEscapes: true
+  globalReturn: true
+  experimentalObjectRestSpread: true
+rules:
+  comma-dangle:
+    - 2
+    - "always-multiline"
+  func-names: 0
+  no-console: 0
+  strict: 0
+  indent:
+    - 1
+    - "tab"
+  no-param-reassign:
+    - 2
+    - props: false

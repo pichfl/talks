@@ -140,15 +140,17 @@ task('build', series('clean', parallel('styles', 'scripts', 'content')));
 task('collect', parallel('build', 'static'));
 
 task('publish', series('build', () => {
+	const dont = [
+		'favicon.ico',
+		'apple-touch-icon-precomposed.png',
+		'pinned.svg',
+		'.html',
+		'.txt',
+		'.xml',
+	];
 	const revAll = new RevAll({
-		dontRenameFile: [
-			'favicon.ico',
-			'apple-touch-icon-precomposed.png',
-			'pinned.svg',
-			'.html',
-			'.txt',
-			'.xml',
-		],
+		dontRenameFile: dont,
+		dontUpdateReference: dont,
 		prefix: '//pichfl.github.io/talks/',
 	});
 

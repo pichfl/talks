@@ -140,9 +140,7 @@ task('static', function files() {
 
 task('build', series('clean', parallel('styles', 'scripts', 'content')));
 
-task('collect', parallel('build', 'static'));
-
-task('publish', series('build', () => {
+task('publish', series(parallel('build', 'static'), 'clean-publish', () => {
 	const dont = [
 		'favicon.ico',
 		'apple-touch-icon-precomposed.png',

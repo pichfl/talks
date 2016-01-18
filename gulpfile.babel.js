@@ -22,6 +22,8 @@ import uglify from 'rollup-plugin-uglify';
 import { dest, parallel, series, src, task, watch } from 'gulp';
 import { rollup } from 'rollup';
 
+const publishing = argv._.indexOf('publish') !== -1;
+
 // Tasks
 task('clean', () => del(['./dist']));
 task('clean-publish', () => del(['./.publish']));
@@ -58,11 +60,11 @@ task('scripts', parallel('codestyle', function bundler() {
 			}),
 			uglify(),
 		],
-		sourceMap: true,
+		sourceMap: !publishing,
 	}).then(bundle => bundle.write({
 		format: 'cjs',
 		dest: 'dist/assets/bundle.js',
-		sourceMap: true,
+		sourceMap: !publishing,
 	}));
 }));
 
@@ -112,6 +114,7 @@ task('content', parallel('content-assets', () => {
 		bustCache: true,
 		data: {
 			argv,
+			isPublishing: publishing,
 		},
 		dataEach(context, file) {
 			Object.keys(file.data).forEach(key => {

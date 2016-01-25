@@ -44,11 +44,11 @@ code {
 	&-meta-keyword      { color: $base07; }
 	&-meta-string       { color: $base07; }
 	&-section           { color: $base07; }
-	&-tag               { color: $base07; }
+	&-tag               { color: $base08; }
 	&-name              { color: $base07; }
 	&-builtin-name      { color: $base07; }
 	&-attr              { color: $base08; }
-	&-attribute         { color: $base07; }
+	&-attribute         { color: $base0a; }
 	&-variable          { color: $base07; }
 	&-bullet            { color: $base0b; }
 	&-code              { color: $base07; }
@@ -57,14 +57,14 @@ code {
 	&-formula           { color: $base07; }
 	&-link              { color: $base07; }
 	&-quote             { color: $base07; }
-	&-selector-tag      { color: $base07; }
+	&-selector-tag      { color: $base08; }
 	&-selector-id       { color: $base07; }
 	&-selector-class    { color: $base07; }
 	&-selector-attr     { color: $base07; }
-	&-selector-pseudo   { color: $base07; }
+	&-selector-pseudo   { color: $base0e; }
 	&-templates         { color: $base07; }
 	&-template-tag      { color: $base07; }
 	&-template-variable { color: $base07; }
-	&-addition          { color: $base07; }
-	&-deletion          { color: $base07; }
+	&-addition          { color: $base0b; }
+	&-deletion          { color: $base08; }
 }

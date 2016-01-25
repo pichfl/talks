@@ -1,6 +1,16 @@
 ---
 title: Try PostCSS
 author: Florian Pichler
+style: |
+  section:first-child {
+    background-image: url(postcss-logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #intro {
+  	background-color: #DD3A0A;
+  }
 ---
 {{> top}}
 
@@ -55,6 +65,11 @@ task('styles', () => {
 
 ## Plugins
 
+Personal favorites
+
+- Autoprefixer
+- CSS MQPacker
+- cssnano
 
 
 ==== #autoprefixer
@@ -62,9 +77,79 @@ task('styles', () => {
 
 ## Autoprefixer
 
-```js
-alert('Test');
+Adds and removes vendor prefixes based on *Can I Use* browser statistics.
+
+```css
+/* input */
+:fullscreen a { display: flex; }
 ```
+
+
+
+```css
+/* output after Autoprefixer with browsers = last 2 versions */
+:-webkit-full-screen a {
+    display: -webkit-flex;
+    display: flex; }
+
+:-moz-full-screen a {
+    display: flex; }
+
+:-ms-fullscreen a {
+    display: -ms-flexbox;
+    display: flex; }
+
+:fullscreen a {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+```
+
+
+
+==== #mqpacker
+
+
+## CSS MQPacker
+
+Packs identical media queries at the end of your stylesheet.
+
+- Very useful for cleaning up after SASS
+- **Danger:** May change the order of your rules
+- Custom rule sorting via callback
+
+More samples and code [on GitHub](https://github.com/hail2u/node-css-mqpacker).
+
+
+
+==== #cssnano
+
+
+## cssnano
+
+- Combines a long list of invidual PostCSS plugins to minifiy CSS
+- Among the rules:
+	- whitespace & final semicolon removal
+	- removal of comments (except for licenses)
+	- discard duplicate rules
+	- merge & optimise selectors
+	- merge adjacent rules
+- Unsafe rules can be disabled
+- See source of this presentation for sample
+
+
+
+==== #more-plugins
+
+## More plugins
+
+- SASS like syntax
+- CSS Stats for selector usage, colors, etc.
+
+Online at [postcss.parts][1]
+
+
+[1]: http://postcss.parts
 
 
 ==== #thanks .title

@@ -76,7 +76,7 @@ em, i {
 	font-style: italic;
 }
 
-.site {
+main {
 	max-width: 45em;
 	margin-right: auto;
 	margin-left: auto;
@@ -92,8 +92,14 @@ a {
 	}
 }
 
+ul, ol, p {
+	& + *{
+		margin-top: 0.75em;
+	}
+}
+
 li {
-	margin: 0 0 0.75em;
+	margin: 0.75em 0 0;
 
 	li {
 		margin-left: 1em;

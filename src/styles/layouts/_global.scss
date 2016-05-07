@@ -18,14 +18,14 @@ html {
 	font-size: inherit;
 	font-style: inherit;
 	font-weight: inherit;
-	line-height: 1.5;
+	line-height: inherit;
 	color: inherit;
 }
 
 html, body {
 	background: $base01;
 	color: #fff;
-	font: 400 28px/30px $sans;
+	font: 400 28px/#{1.5} $sans;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -136,4 +136,9 @@ blockquote {
 		color: $base03;
 		z-index: -1;
 	}
+}
+
+.aux {
+	position: absolute;
+	left: -999em;
 }

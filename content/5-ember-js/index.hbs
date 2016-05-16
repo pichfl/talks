@@ -2,13 +2,17 @@
 title: An ambitious introduction to Ember.js
 author: Florian Pichler
 style: |
-  section:first-child {
-	background-image: url(emberjs.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+  section:first-child,
+  section:nth-child(3) {
+    background-image: url(emberjs.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  section:nth-child(2) img {
+    margin-top: calc(50vh - 285px);
   }
   h1 {
-	margin-bottom: 2.5em;
+    margin-bottom: 2.5em;
   }
 ---
 {{> top}}
@@ -23,40 +27,54 @@ style: |
 
 <footer><a href="../">More talks by @pichfl</a></footer>
 
+==== #tomster
+
+
+![tomster](./original.png)
+
+
+==== #intro2 .title
+
+
+<h1>Ein ambitionierter Einstieg in <span class="aux">Ember.js</span></h1>
+<p><em>Von {{author}}</em></p>
+
+<footer><a href="../">Mehr Vorträge</a></footer>
+
 
 ==== #history
 
-## History
+## Geschichte
 
-- Ember.js is a fork of SproutCore, infamous for powering Apples MobileMe platform
-- Created by Yehuda Katz (core team member of jQuery, Ruby on Rails, …) and many others
-- MVC-ish framework for single-page web applications
+- Ember.js ist ein Fork von SproutCore, berüchtigt für Apples MobileMe
+- Von Yehuda Katz (core team member of jQuery, Ruby on Rails, …) und vielen anderen
+- MVC-Framework für "single-page web applications"
 
 
 
 ==== #ambitious
 
-## A framework for creating ambitious web applications
+## “A framework for creating ambitious web applications”
 
-- Open-source and driven by RFCs
-- Strong usage of [Semantic Versioning](http://semver.org)
-- Convention over Configuration
-- Highly opiononated but flexible
-- Not owned by a single company, but supported by many sponsors: Yahoo, LinkedIn, Bustle
-- Used by: Discourse, Groupon, Vine, Nordstrom, Twitch.tv, Apple Music, Sony PSN, …
+- Open-source. Entwicklung wird durch RFCs beeinflusst
+- Einsatz von [Semantic Versioning](http://semver.org)
+- Konvention vor Konfiguration (wie auch bei Rails)
+- Stark und trotzdem flexibel durch Einhaltung von Konzepten der Core-Entwickler
+- Viele Sponsoren statt einer Firma als Owner: Yahoo, LinkedIn, Bustle, Yapp, Tilde, Square
+- Prominente Nutzer: Discourse, Groupon, Vine, Nordstrom, Twitch.tv, Apple Music, Sony PSN, …
 
 
 
 ==== #features
 
-## Features
+## Meta Features
 
-- ES2015 modules by default
-- includes routing, controllers, components, services, helpers, templating, models, a data layer …
-- comes with Ember-CLI
+- ES2015 modules (via Babel.js)
+- Ember-CLI
 - Ember Inspector
-- 6 week release cycle, with proper betas, a canary channel
-- LTS support
+- Release-Zyklus von 6 Wochen, mit Beta-Releases und canary channel
+- LTS Support
+- Freundliche und hilfsbereite Community
 
 
 
@@ -64,27 +82,92 @@ style: |
 
 ## Basic concepts
 
+- Ember Objects
 - Routes
-- Models
 - Services
 - Templates
 - Components
 - (Controllers)
+- Models (Ember Data)
 
-### OOP
+==== #ember-objects
 
-- Class system with Mixins, Extending, Reopening
-- All parts of Ember extend Ember.Object, which enables support for getters and setters, data-binding - even on legacy systems
+## Ember.Object
+
+- (noch) Alternative zu ES2015 Klassen, etc.
+- Unterstützung für die Überwachung von Änderungen an Eigenschaften von Objekten*
+- Klassen-System mit Mixins, Extending, Constructors
+- Ember.Enumerable liefert Arrays mit KVO-Support
+
+
+<br>\* auch bekannt als Key Value Observer / KVO. `Object.oberserve()` sollte ein ähnliches Verhalten liefern, ist aber obsolet. Zukünftig könnte Ember auf `Proxy` setzen.
+
+
+==== #classes-instances
+
+## Klassen, Instanzen, Reopening
+
+- Neue Klassen durch `.extend({})` von `Ember.Object`
+- Neue Instanzen durch `.create({})` einer Klasse.
+- Sowohl Instanzen als auch deren Basis-Klasse lassen sich durch `.reopen()` bzw. `.reopenClass` zur Laufzeit verändern, falls nötig. Dieses Verhalten erlaubt es Addons zum Start der Ember-App Verhalten nachzurüsten, z.B. Event Handler oder Computed Properties.
+
+
+==== #computed
+
+## Computed Properties
+
+- Makros mit automatischem Caching für Ergebnisse
+- Cache-Invalidation erfolgt automatisch durch Angabe von Abhängigkeiten
+- Durch das Cache nur unwesentlich langsamer als statische Eigenschaften
+- Unterstützung für Getter/Setter (Getter als Default)
+
+```js
+Ember.Object.extend({
+	firstName: 'Jon',
+	lastName: 'Snow',
+
+	fullName: computed('firstName', 'lastName', function() {
+		const firstName = this.get('firstName');
+		const lastName = this.get('lastName');
+
+		return `${firstName} ${lastName}`;
+	}),
+});
+```
+
+
+==== #computed-macros
+
+## Computed.Macros
+
+```js
+computed.and('A', 'B') // A && B
+computed.filterBy('C', 'key', true) // _.filter(C, 'key', true)
+computed.not('D') // === !propD
+computed.mapBy('E', 'key') // Object.keys(E)
+```
+
+- 30+ Makros mitgeliefert
+- eigene Makros sind leicht zu erstellen
+- Nützlich um Logik aus Templates zu halten
+- Cached Two-Way- und One-Way-Bindings
+
+```js
+computed.alias('serviceName.foo')
+computed.oneWay('other.path') // reads until overwritten
+computed.readOnly('foo.bar') // throws if trying to write
+```
+
 
 
 ==== #routing-router
 
-## Routing - The router
+## The router
 
-- application state is represented by an URL
-- rock solid - inspiration for projects like ui-router (Angular.js)
-- dynamic segments, query params and nested routes
-- intelligent defaults and autogenerated routes
+- App-Zustand dargestellt durch die URL
+- extrem zuverlässig - u.A. Inspiration für den ui-router für Angular.js
+- dynamische URL-Segemente, Query-Parameter und Schachtelung
+- Autogenerated routes
 
 
 ```js
@@ -97,18 +180,24 @@ Router.map(function() {
 });
 ```
 
+
+
 ==== #routing-routes
 
-## Routing - Routes
+## Routes
 
-- promise aware for asynchronous routing, error and loading states
-- retrieve model data (manually or from a store)
-- setup and render a template (a component)
+- Daten laden
+- Verstehen und nutzen Promises für Ladezustände und Fehlerbehandlung
+- Template (Component) Setup
+- Verarbeitung von Actions
+
 
 ```js
 export default Ember.Route.extend({
 	model() {
-		return this.store.findAll('entry'); // using ember-data
+		// using ember-data
+		return this.store.findAll('entry');
+
 		// return jQuery.ajax(…); // works as well
 	},
 
@@ -119,6 +208,118 @@ export default Ember.Route.extend({
 	},
 });
 ```
+
+
+
+==== #services
+
+## Services
+
+- Langlebige Ember-Objekte, die an vielen Stellen einer App genutzt werden können
+- Beispiele
+	- Timer (globaler Tick)
+	- Lieferant für UI-Übersetzungen
+	- Kommunikation mit Scripts außerhalb von Ember.js
+
+```js
+export default Controller.extend({
+	ticktock: Ember.inject.service(),
+
+	now: computed('ticktock.pulse', function() {
+		return new Date();
+	}),
+});
+```
+
+
+
+==== #templates
+
+## Templates
+
+- <del>Handlebars</del> <del>HTMLBars</del> <ins>Glimmer</ins>
+	+ Über die Jahre wurde die Engine mehrfach getauscht, ohne Mehrarbeit für Nutzer von Ember
+- Vorkompilierte Templates ohne Logik, als eigenständige Dateien oder in einer Component
+- Glimmer nutzt ein ähnliches Konzept wie React (Virtual DOM)
+	+ Unterscheidung nicht auf DOM-Ebene, sondern in den Daten
+- Glimmer 2: In Typescript geschrieben. „Run-Time-Compiler für HTML“ - Noch schneller und ohne API-Changes für Nutzer
+
+
+
+==== #components
+
+## Components
+
+
+
+==== #controllers
+
+## Controllers
+
+
+
+==== #ember-data
+
+## Ember Data
+
+- Ember Data
+	+ Adapter
+	+ Serializer
+	+ JSONAPI
+
+
+==== #models
+
+## Models
+
+- Beschreiben Struktur der Inhalte eines API-Endpunkts
+
+
+```js
+export default DS.Model.extend({
+	name: attr('string'),
+	age: attr('number'),
+	parents: hasMany('person', {
+		async: true,
+	})
+});
+```
+
+
+
+==== #ember-inspector
+
+## Ember Inspector
+
+
+
+==== #ember-cli
+
+## Ember CLI
+
+
+
+==== #addons
+
+## Addons
+
+- Beliebtes Zeug
+	+ ESA
+	+ ember-i18n
+	+ cp-validations
+	+ ember-truth-helpers
+
+
+
+==== #why-ember
+
+## Warum Ember?
+
++ auch nach mittlerweile vier Jahren aktuell und zuverlässig
++ Testing
++ Klare Sturukturen auch für große Projekte
++ Langlebigkeit
+
 
 
 ==== #thanks .title

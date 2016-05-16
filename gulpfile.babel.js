@@ -1,3 +1,4 @@
+// import nodeResolve from 'rollup-plugin-node-resolve';
 import argv from './util/argv';
 import autoprefixer from 'autoprefixer';
 import babel from 'rollup-plugin-babel';
@@ -13,7 +14,6 @@ import htmlmin from 'gulp-htmlmin';
 import matter from 'gray-matter';
 import mqpacker from 'css-mqpacker';
 import nav from 'gulp-nav';
-import npm from 'rollup-plugin-npm';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import RevAll from 'gulp-rev-all';
@@ -28,7 +28,7 @@ const publishing = argv._.indexOf('publish') !== -1;
 task('clean', () => del(['./dist']));
 task('clean-publish', () => del(['./.publish']));
 
-task('codestyle', () => {
+task('codestyle', function codestyle() {
 	return src([
 		'src/**/*.js',
 		'gulpfile.babel.js',
@@ -42,12 +42,12 @@ task('scripts', parallel('codestyle', function bundler() {
 	return rollup({
 		entry: 'src/scripts/main.js',
 		plugins: [
-			npm({
-				jsnext: true,
-				main: true,
-				browser: true,
-				builtins: false,
-			}),
+			// nodeResolve({
+			// 	jsnext: true,
+			// 	main: true,
+			// 	browser: true,
+			// 	builtins: false,
+			// }),
 			cjs(),
 			babel({
 				exclude: 'node_modules/**',
@@ -64,12 +64,11 @@ task('scripts', parallel('codestyle', function bundler() {
 	}).then(bundle => bundle.write({
 		format: 'cjs',
 		dest: 'dist/assets/bundle.js',
-		sourceMap: !publishing,
+		// sourceMap: !publishing,
 	}));
 }));
 
-task('styles', () => {
-	return src('src/styles/main.scss')
+task('styles', () => src('src/styles/main.scss')
 	.pipe(sass().on('error', sass.logError))
 	.pipe(postcss([
 		autoprefixer({
@@ -82,8 +81,7 @@ task('styles', () => {
 			autoprefixer: false,
 		}),
 	]))
-	.pipe(dest('dist/assets'));
-});
+	.pipe(dest('dist/assets')));
 
 task('content-assets', function contentAssets() {
 	return src([
@@ -93,8 +91,7 @@ task('content-assets', function contentAssets() {
 	.pipe(dest('dist'));
 });
 
-task('content', parallel('content-assets', () => {
-	return src('content/**/*.hbs')
+task('content', parallel('content-assets', () => src('content/**/*.hbs')
 	.pipe(rename(p => {
 		p.extname = '.html';
 	}))
@@ -130,8 +127,7 @@ task('content', parallel('content-assets', () => {
 	.pipe(htmlmin({
 		collapseWhitespace: true,
 	}))
-	.pipe(dest('dist'));
-}));
+	.pipe(dest('dist'))));
 
 task('static', function files() {
 	return src('src/static/**/*')
@@ -162,6 +158,12 @@ task('publish', series(parallel('build', 'static'), 'clean-publish', () => {
 	}));
 }, parallel('clean', 'clean-publish')));
 
+task('reload', done => {
+	browserSync.reload();
+
+	return done();
+});
+
 task('watch', () => {
 	browserSync.init({
 		ghostMode: false,
@@ -174,12 +176,13 @@ task('watch', () => {
 	});
 
 	watch([
+		'gulpfile.js',
 		'content/**/*',
 		'src/partials/**/*.hbs',
 		'src/helpers/**/*.js',
-	], parallel('codestyle', series('content', browserSync.reload)));
-	watch('src/styles/**/*.scss', series('styles', browserSync.reload));
-	watch('src/scripts/**/*.js', parallel('scripts', browserSync.reload));
+	], parallel('codestyle', series('content', 'reload')));
+	watch('src/styles/**/*.scss', series('styles', 'reload'));
+	watch('src/scripts/**/*.js', parallel('scripts', 'reload'));
 });
 
 task('default', series('build', 'watch'));

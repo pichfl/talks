@@ -56,7 +56,7 @@ module.exports = function markdown(context) {
 
 	text = slides.map((slide, index) => {
 		const hash = slide.hash || `slide-${index}`;
-		const type = 'slides__slide' + (slide.type ? `--${slide.type}` : '');
+		const type = `slides__slide${(slide.type ? `--${slide.type}` : '')}`;
 		const content = typogr(marked(slide.content)).typogrify();
 
 		return `			<section id="${hash}" class="${type}">

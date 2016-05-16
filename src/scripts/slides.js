@@ -20,9 +20,7 @@ export class Slides {
 		if (win.location.hash) {
 			const hash = win.location.hash.substr(1);
 
-			return this.slides.findIndex(slide => {
-				return slide.hash === hash;
-			}) || 0;
+			return this.slides.findIndex(slide => slide.hash === hash) || 0;
 		}
 
 		return 0;
@@ -81,9 +79,9 @@ export class Slides {
 	}
 
 	attach() {
-		this._onKeyDownBound = this.onKeyDown.bind(this);
+		this.onKeyDownBound = this.onKeyDown.bind(this);
 
-		win.addEventListener('keydown', this._onKeyDownBound);
+		win.addEventListener('keydown', this.onKeyDownBound);
 	}
 }
 

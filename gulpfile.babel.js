@@ -148,7 +148,7 @@ task('publish', series(parallel('build', 'static'), 'clean-publish', () => {
 	const revAll = new RevAll({
 		dontRenameFile: dont,
 		dontUpdateReference: dont,
-		prefix: '//pichfl.github.io/talks/',
+		remoteUrl: 'git@github.com:pichfl/talks.git',
 	});
 
 	return src('dist/**/*')

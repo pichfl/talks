@@ -250,22 +250,38 @@ export default Controller.extend({
 
 ## Components
 
+- Kombination aus Template und Source Code
+- Orientieren sich an Web Components
+- Unterstützung für Angle-Brackets `<a-component />` mit Glimmer 2, aktueller Syntax an Handlebars orientiert
+- Data down, actions up als aktuelle Empfehlung.
+- Live-Cycle-Hooks zur effizienten Nutzung (Setup, Re-Rendering, etc.)
+- Mit Release von Glimmer viele Analogien zu React
+
 
 
 ==== #controllers
 
 ## Controllers
 
+- Historisch zuständig für die Manipulation von in einer Route geladenen Model-Daten
+- Noch nicht deprecated, aber Plan besteht, dies mit Ember 3.0 in die Tat umzusetzen und sie nahtlos durch Routable Components zu ersetzen
+- Aktuell als Sonderfall einer Component beschrieben
+- Wird automatisch zur Laufzeit für jede Route generiert, falls nicht vorhanden
+- Jede Route hat aktuell einen Controller mit `model` Eigenschaft
+- Reagiert auf Actions im Template
 
 
 ==== #ember-data
 
 ## Ember Data
 
-- Ember Data
-	+ Adapter
-	+ Serializer
-	+ JSONAPI
+- Kein fester, aber empfohlener Bestandteil von Ember
+- Abstrahiert die Kommunikation mit JSONAPI-/REST-basierten APIs
+- Persistance Layer inkl. Rollback und Caching
+- Andere Formate durch Adapter und Serializer relativ leicht umzusetzen
+- Adapter und Serializer für jedes Model einzeln anpassbar
+- Stream- und Promise-basiert
+
 
 
 ==== #models
@@ -291,11 +307,28 @@ export default DS.Model.extend({
 
 ## Ember Inspector
 
+Ein Browser-Addon für Chrome und Firefox sowie ein Bookmarklet für alle anderen Brower.
+
+- Schneller Überblick über aktive Routes, Views, Components
+- Promise-Debugger für alle in Ember genutzten Promises
+- Daten-Ansicht für sämtliche Datensätze und deren Zustände im Store von Ember Data
+- Gesammelte Deprecation Nachrichten
+- Render Performance Informationen
+
 
 
 ==== #ember-cli
 
 ## Ember CLI
+
+Webpack, Grunt, Gulp, Composer & Co? Nicht nötig.
+
+- Developement Server mit Live-Reload
+- Generatoren & Blueprints für sämtliche Bestandteile von Ember
+- Update-Management
+- Production Builds inkl. Optimierung
+- Addon-System
+- Testing
 
 
 
@@ -303,11 +336,13 @@ export default DS.Model.extend({
 
 ## Addons
 
-- Beliebtes Zeug
-	+ ESA
-	+ ember-i18n
-	+ cp-validations
-	+ ember-truth-helpers
+- Funktionen für eine App (Components, sogar ganze Apps)
+- Funktionen für den Build-Prozess (SASS, ESLint, zusätzliche Blueprints)
+
+### Beliebte Addons
++ Ember Simple Auth: Abstrahiert Authentifizierung, inkl. Login
++ ember-i18n: Lokalisierung
++ cp-validations: Lazy Validierung von Models und beliebigen Objekten
 
 
 
@@ -315,17 +350,30 @@ export default DS.Model.extend({
 
 ## Warum Ember?
 
-+ auch nach mittlerweile vier Jahren aktuell und zuverlässig
-+ Testing
++ auch nach mittlerweile vier Jahren immer zuverlässig
++ Testing und Langlebigkeit von Projekten
 + Klare Sturukturen auch für große Projekte
-+ Langlebigkeit
++ Mittlerweile relativ einfacher Einstieg
++ Hilfsbereite Community
++ Projekte wie Glimmer zeigen, dass Fortschritt möglich ist, ohne immer wieder von Vorn anfangen zu müssen.
+
+
+
+==== #questions .title
+
+# Fragen?
+
+Gerne jetzt, oder jederzeit auf den üblichen Kanälen.
 
 
 
 ==== #thanks .title
 
 
-# Danke
+# Danke fürs Zuhören
+
+Florian Pichler / @pichfl / fp@ylk.gd
+
 
 
 {{/slides}}

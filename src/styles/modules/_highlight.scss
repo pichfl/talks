@@ -1,12 +1,12 @@
 pre, code {
-	font-family: 'Source Code Pro', Menlo, Consolas, monospace;
+	font-family: 'OperatorMono-Book', 'Source Code Pro', Menlo, Consolas, monospace;
 }
 
 pre {
 	background: $base00;
 	padding: 0.5em 0.75em;
 	font-size: 28px;
-	line-height: 0.75em;
+	line-height: 1.2em;
 
 	code {
 		display: block;
@@ -22,10 +22,12 @@ code {
 	background: $base00;
 	color: $base07;
 	padding: 0.25em 0.5em;
+	border-radius: 0.2em;
 }
 
 .hljs {
-	&-keyword           { color: $base0c; }
+	&-keyword           { color: $base0c;
+	                      font-family: 'OperatorMono-BookItalic', 'Source Code Pro', Menlo, Consolas, monospace; }
 	&-built_in          { color: $base07; }
 	&-type              { color: $base07; }
 	&-literal           { color: $base0b; }

@@ -17,6 +17,15 @@ importers:
         specifier: '*'
         version: 0.0.1
 
+  presentations/try-postcss:
+    dependencies:
+      auto-reveal:
+        specifier: 0.2.1
+        version: 0.2.1
+      auto-reveal-theme-fp:
+        specifier: '*'
+        version: 0.0.1
+
 packages:
 
   '@esbuild/aix-ppc64@0.21.5':

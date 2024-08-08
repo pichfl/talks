@@ -2,7 +2,8 @@ name: Deploy content to GitHub Pages
 
 on:
   push:
-    branches: [$default-branch]
+    branches: main
+
   workflow_dispatch:
 
 permissions:
@@ -26,26 +27,32 @@ jobs:
           version: 9
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Build
         run: |
           pnpm install
           pnpm -r build
-          find ./presentations -mindepth 2 -maxdepth 2 -type d -name 'dist' -exec sh -c 'for dist_dir; do mv "$dist_dir" "./$(basename $(dirname "$dist_dir"))"; done' sh {} +
+      # https://github.com/mainmatter/auto-reveal/issues/16
+      - name: Move dist directories
+        run: find ./presentations -mindepth 2 -maxdepth 2 -type d -name 'dist' -exec sh -c 'for dist_dir; do mv "$dist_dir" "./$(basename $(dirname "$dist_dir"))"; done' sh {} +
+      # https://github.com/mainmatter/auto-reveal/issues/15
+      - name: Rewrite asset paths
+        run: find . -type f -path '*/index.html' -exec sh -c 'sed -i.bak "s/src=\"\/assets/src=\".\/assets/g; s/href=\"\/assets/href=\".\/assets/g" "$1" && rm -f "$1.bak"' _ {} \;
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

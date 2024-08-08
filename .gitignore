@@ -1,4 +1,4 @@
-node_modules
 .DS_Store
-.publish
-dist
+node_modules
+yarn-error.log
+/.eslintcache

@@ -36,14 +36,14 @@ jobs:
           pnpm -r build
       # https://github.com/mainmatter/auto-reveal/issues/16
       - name: Move dist directories
-        run: find ./presentations -mindepth 2 -maxdepth 2 -type d -name 'dist' -exec sh -c 'for dist_dir; do mv "$dist_dir" "./$(basename $(dirname "$dist_dir"))"; done' sh {} +
+        run: find ./presentations -mindepth 2 -maxdepth 2 -type d -name 'dist' -exec sh -c 'for dist_dir; do mv "$dist_dir" "./public/$(basename $(dirname "$dist_dir"))"; done' sh {} +
       # https://github.com/mainmatter/auto-reveal/issues/15
       - name: Rewrite asset paths
-        run: find . -type f -path '*/index.html' -exec sh -c 'sed -i.bak "s/src=\"\/assets/src=\".\/assets/g; s/href=\"\/assets/href=\".\/assets/g" "$1" && rm -f "$1.bak"' _ {} \;
+        run: find . -type f -path './public/*/index.html' -exec sh -c 'sed -i.bak "s/src=\"\/assets/src=\".\/assets/g; s/href=\"\/assets/href=\".\/assets/g" "$1" && rm -f "$1.bak"' _ {} \;
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './public'
 
   deploy:
     environment:

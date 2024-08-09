@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "auto-reveal": "0.2.1",
+    "auto-reveal": "*",
     "auto-reveal-theme-fp": "*"
   }
 }

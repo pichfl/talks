@@ -6,12 +6,25 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    dependencies:
+      auto-reveal:
+        specifier: 0.2.1
+        version: 0.2.1
+
+  presentations/easy-self-signed-certificates-for-development:
+    dependencies:
+      auto-reveal:
+        specifier: '*'
+        version: 0.2.1
+      auto-reveal-theme-fp:
+        specifier: '*'
+        version: 0.0.1
 
   presentations/have-you-tried-astro:
     dependencies:
       auto-reveal:
-        specifier: 0.2.1
+        specifier: '*'
         version: 0.2.1
       auto-reveal-theme-fp:
         specifier: '*'
@@ -20,7 +33,7 @@ importers:
   presentations/try-postcss:
     dependencies:
       auto-reveal:
-        specifier: 0.2.1
+        specifier: '*'
         version: 0.2.1
       auto-reveal-theme-fp:
         specifier: '*'

@@ -8,6 +8,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "auto-reveal": "0.2.1"
+  }
 }
-

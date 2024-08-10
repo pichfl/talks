@@ -5,3 +5,4 @@ yarn-error.log
 
 public/*
 !public/index.html
+!public/main.css

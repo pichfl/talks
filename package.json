@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "biome check --write .",
+    "lint": "biome check ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "auto-reveal": "0.2.1"
+    "auto-reveal": "0.2.1",
+    "biome": "^0.3.3"
   }
 }

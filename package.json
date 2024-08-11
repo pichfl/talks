@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "biome check --write .",
-    "lint": "biome check ."
+    "format": "biome check --write . && prettier --write **/*.{css,md}",
+    "lint": "biome check . && prettier **/*.{css,md}"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
   "dependencies": {
     "auto-reveal": "0.2.1",
     "biome": "^0.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }

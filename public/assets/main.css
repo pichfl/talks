@@ -114,7 +114,7 @@ section {
 	align-self: center;
 	justify-self: end;
 	background: #efebe9;
-	margin-top: 3rem
+	margin-top: 3rem;
 }
 
 .portrait img {
@@ -129,13 +129,13 @@ section {
 	pointer-events: none;
 }
 
-.portrait img[src$="png"] {
+.portrait img[src$='png'] {
 	position: absolute;
 	left: 0;
 	animation: blah 2s 5s 3;
 }
 
-.portrait:hover img[src$="png"] {
+.portrait:hover img[src$='png'] {
 	animation: blah 2s infinite;
 }
 
@@ -199,6 +199,6 @@ section {
 	}
 
 	.portrait {
-		margin-top: 0
+		margin-top: 0;
 	}
 }

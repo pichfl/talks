@@ -12,7 +12,8 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"auto-reveal": "0.2.1",
+		"auto-reveal": "0.3.0",
+		"auto-reveal-theme-fp": "0.2.0",
 		"biome": "^0.3.3"
 	},
 	"devDependencies": {

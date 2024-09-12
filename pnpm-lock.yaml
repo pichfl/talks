@@ -11,6 +11,9 @@ importers:
       auto-reveal:
         specifier: 0.3.0
         version: 0.3.0
+      auto-reveal-theme-fp:
+        specifier: 0.0.2
+        version: 0.0.2
       biome:
         specifier: ^0.3.3
         version: 0.3.3
@@ -22,37 +25,37 @@ importers:
   presentations/auto-reveal:
     dependencies:
       auto-reveal:
-        specifier: ^0.3.0
+        specifier: '*'
         version: 0.3.0
       auto-reveal-theme-fp:
-        specifier: 0.0.2
+        specifier: '*'
         version: 0.0.2
 
   presentations/easy-self-signed-certificates-for-development:
     dependencies:
       auto-reveal:
-        specifier: ^0.3.0
+        specifier: '*'
         version: 0.3.0
       auto-reveal-theme-fp:
-        specifier: ^0.0.2
+        specifier: '*'
         version: 0.0.2
 
   presentations/have-you-tried-astro:
     dependencies:
       auto-reveal:
-        specifier: ^0.3.0
+        specifier: '*'
         version: 0.3.0
       auto-reveal-theme-fp:
-        specifier: ^0.0.2
+        specifier: '*'
         version: 0.0.2
 
   presentations/try-postcss:
     dependencies:
       auto-reveal:
-        specifier: ^0.3.0
+        specifier: '*'
         version: 0.3.0
       auto-reveal-theme-fp:
-        specifier: ^0.0.2
+        specifier: '*'
         version: 0.0.2
 
 packages:

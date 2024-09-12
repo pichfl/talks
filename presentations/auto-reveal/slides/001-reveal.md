@@ -1,8 +1,6 @@
 <!-- .slide: data-bg-plum -->
 
-I apologise for the fault in the
-slide order. Those responsible have been
-sacked.
+I apologise for the fault in the order of slides. Those responsible have been sacked.
 
 ---
 

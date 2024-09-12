@@ -14,7 +14,7 @@ Inspired by Ember's philosophy
 ---
 
 ```sh
-cd my-presentation
+cd majestik-møøse
 mkdir slides
 touch slides/000-slide.md
 
@@ -28,7 +28,7 @@ pnpm run auto-reveal
 `slides/000-slide.md`
 
 ```md
-# First slide
+  # First slide
 ```
 
 ---
@@ -42,14 +42,14 @@ pnpm run auto-reveal
 `slides/000-slide.md`
 
 ```md
-# First slide
+  # First slide
 
-Note:
-Presenter notes here
+  Note:
+  Presenter notes here
 
----
+  ---
 
-## Second slide
+  ## Second slide
 ```
 
 ---
@@ -75,7 +75,7 @@ I apologise again for the fault in the slides…
 
 ---
 
-- Each file becomes a horizontal slide
+- Each `.md` file becomes a horizontal slide
 - Each `---` becomes a vertical slide
 
 ```txt
@@ -87,7 +87,7 @@ I apologise again for the fault in the slides…
 ```
 
 Note:
-Sorted by `.localeCompare()`
+Md are sorted by `.localeCompare()`
 
 ---
 

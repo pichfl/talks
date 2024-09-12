@@ -4,12 +4,13 @@
 
 ---
 
-### Hi! I'm Florian.
+### Hi!
 
-I work at Mainmatter
+I’m Florian.<br>
+I work at Mainmatter.
 
-@fp@social.lol<br>
-@mainmatter@fosstodon.org
+🐘 @fp@social.lol
+
 
 ---
 

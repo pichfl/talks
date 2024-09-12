@@ -1,22 +1,15 @@
 <!-- .slide: data-bg-ocean -->
 
-### You have seen this in action already!
+### You have seen this in action!
 
-Chris Manson used `auto-reveal` for his talk. <br>
-This talk is also powered by it.
-
----
-
-<!-- .slide: data-bg-ocean -->
-
-## Use is for *your* next presentation!
-
-Check out at<br>**github.com/mainmatter/auto-reveal**
+Chris Manson used `auto-reveal`.<br>
+So did Bartłomiej Dudzik.<br>
+And of course this one is using it too.
 
 ---
 
-<!-- .slide: data-bg-ocean -->
+<!-- .slide: data-bg-plum -->
 
-## Use is for your *next* presentation!
+### Use it for *your* next presentation!
 
 Check out at<br>**github.com/mainmatter/auto-reveal**

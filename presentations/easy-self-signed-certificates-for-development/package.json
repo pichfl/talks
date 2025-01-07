@@ -1,18 +1,19 @@
 {
-  "name": "mkcert-easy-self-signed-certificates-for-development",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "auto-reveal",
-    "build": "auto-reveal build"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "auto-reveal": "*",
-    "auto-reveal-theme-fp": "*"
-  }
+	"name": "mkcert-easy-self-signed-certificates-for-development",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "auto-reveal",
+		"build": "auto-reveal build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"auto-reveal": "*",
+		"auto-reveal-theme-fp": "*"
+	},
+	"devDependencies": {}
 }

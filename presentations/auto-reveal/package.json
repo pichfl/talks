@@ -13,5 +13,6 @@
 	"dependencies": {
 		"auto-reveal": "*",
 		"auto-reveal-theme-fp": "*"
-	}
+	},
+	"devDependencies": {}
 }

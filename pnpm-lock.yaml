@@ -13,7 +13,7 @@ importers:
         version: 0.3.0
       auto-reveal-theme-fp:
         specifier: 0.0.2
-        version: 0.0.2
+        version: link:../auto-reveal-theme-fp
       biome:
         specifier: ^0.3.3
         version: 0.3.3
@@ -29,7 +29,7 @@ importers:
         version: 0.3.0
       auto-reveal-theme-fp:
         specifier: '*'
-        version: 0.0.2
+        version: link:../../../auto-reveal-theme-fp
 
   presentations/easy-self-signed-certificates-for-development:
     dependencies:

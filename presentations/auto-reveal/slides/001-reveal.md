@@ -1,22 +1,22 @@
-<!-- .slide: data-bg-plum -->
+<!-- .slide: data-bg-plus -->
 
-I apologise for the fault in the order of slides. Those responsible have been sacked.
+# …
 
 ---
 
-<!-- .slide: data-bg-plum -->
+<!-- .slide: data-bg-minus -->
 
 ### *Quick* refresher
 
 ---
 
-<!-- .slide: data-bg-plum -->
+<!-- .slide: data-bg-minus -->
 
 <img src="reveal.svg" alt="Reveal.js" width="50%" style="margin:auto;display:block;">
 
 ---
 
-<!-- .slide: data-bg-plum -->
+<!-- .slide: data-bg-minus -->
 
 ### Reveal.js
 

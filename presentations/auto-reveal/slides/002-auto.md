@@ -33,7 +33,7 @@ pnpm run auto-reveal
 
 ---
 
-<!-- .slide: data-bg-ocean -->
+<!-- .slide: data-bg-plus -->
 
 # First slide
 
@@ -42,36 +42,30 @@ pnpm run auto-reveal
 `slides/000-slide.md`
 
 ```md
-  # First slide
+  # *First* slide
 
   Note:
   Presenter notes here
 
   ---
 
-  ## Second slide
+  ## Second *slide*
 ```
 
 ---
 
-<!-- .slide: data-bg-ocean -->
+<!-- .slide: data-bg-plus -->
 
-# First slide
+# *First* slide
 
 Note:
 Presenter notes here
 
 ---
 
-<!-- .slide: data-bg-ocean -->
+<!-- .slide: data-bg-plus -->
 
-## Mynd you, møøse bites Kan be pretty nasti
-
----
-
-<!-- .slide: data-bg-plum -->
-
-I apologise again for the fault in the slides…
+## Second *slide*
 
 ---
 
@@ -103,6 +97,12 @@ Need to add images? Put them in `./public`
     ├── ...
     └── 004-Antler-care-by.md
 ```
+
+---
+
+<img src="qrcode.png" alt="discord.gg/PdEVGxGUNh" width="33%" style="margin:auto 0;display:block;">
+
+Join the Web & Wine Discord!
 
 ---
 

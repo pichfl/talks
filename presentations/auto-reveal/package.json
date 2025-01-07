@@ -1,10 +1,11 @@
 {
-	"name": "auto-reveal",
+	"name": "introducing-auto-reveal",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "auto-reveal"
+		"start": "auto-reveal",
+		"build": "auto-reveal build"
 	},
 	"keywords": [],
 	"author": "",

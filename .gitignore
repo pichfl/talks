@@ -6,3 +6,5 @@ yarn-error.log
 public/*
 !public/index.html
 !public/assets
+
+presentations/**/dist

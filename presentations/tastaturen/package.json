@@ -1,0 +1,20 @@
+{
+  "name": "tastaturen",
+  "version": "0.0.0",
+  "scripts": {
+    "auto-reveal": "auto-reveal",
+    "start": "auto-reveal start",
+    "build": "auto-reveal build"
+  },
+  "type": "module",
+  "keywords": [
+    "auto-reveal",
+    "presentation"
+  ],
+  "private": true,
+  "author": "",
+  "description": "",
+  "dependencies": {
+    "auto-reveal-theme-fp": "link:../auto-reveal-theme-fp"
+  }
+}

@@ -4,7 +4,7 @@
   "scripts": {
     "auto-reveal": "auto-reveal",
     "start": "auto-reveal start",
-    "build": "auto-reveal build"
+    "build": "auto-reveal build -o ../../public/tastaturen"
   },
   "type": "module",
   "keywords": [
@@ -15,6 +15,7 @@
   "author": "",
   "description": "",
   "dependencies": {
-    "auto-reveal-theme-fp": "link:../auto-reveal-theme-fp"
-  }
+		"auto-reveal": "*",
+		"auto-reveal-theme-fp": "*"
+	}
 }

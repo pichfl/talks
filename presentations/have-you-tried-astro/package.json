@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "auto-reveal",
-		"build": "auto-reveal build"
+		"build": "auto-reveal build -o ../../public/have-you-tried-astro"
 	},
 	"keywords": [],
 	"author": "",

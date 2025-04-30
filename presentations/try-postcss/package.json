@@ -6,14 +6,14 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "auto-reveal",
-		"build": "auto-reveal build"
+		"build": "auto-reveal build -o ../../public/try-postcss"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"auto-reveal": "*",
-		"auto-reveal-theme-fp": "*"
+		"auto-reveal": "0.6.0",
+		"auto-reveal-theme-fp": "0.0.4"
 	},
 	"devDependencies": {}
 }

@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "auto-reveal",
-		"build": "auto-reveal build"
+		"build": "auto-reveal build -o ../../public/auto-reveal"
 	},
 	"keywords": [],
 	"author": "",

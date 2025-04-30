@@ -12,14 +12,14 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(@types/node@22.15.3)
       auto-reveal-theme-fp:
-        specifier: link:../auto-reveal-theme-fp
-        version: link:../auto-reveal-theme-fp
+        specifier: 0.0.4
+        version: 0.0.4
       biome:
-        specifier: ^0.3.3
+        specifier: 0.3.3
         version: 0.3.3
     devDependencies:
       prettier:
-        specifier: ^3.5.3
+        specifier: 3.5.3
         version: 3.5.3
 
   presentations/auto-reveal:
@@ -51,17 +51,20 @@ importers:
 
   presentations/tastaturen:
     dependencies:
-      auto-reveal-theme-fp:
-        specifier: link:../auto-reveal-theme-fp
-        version: link:../auto-reveal-theme-fp
-
-  presentations/try-postcss:
-    dependencies:
       auto-reveal:
         specifier: '*'
         version: 0.6.0(@types/node@22.15.3)
       auto-reveal-theme-fp:
         specifier: '*'
+        version: 0.0.4
+
+  presentations/try-postcss:
+    dependencies:
+      auto-reveal:
+        specifier: 0.6.0
+        version: 0.6.0(@types/node@22.15.3)
+      auto-reveal-theme-fp:
+        specifier: 0.0.4
         version: 0.0.4
 
 packages:
@@ -403,8 +406,8 @@ packages:
   aws-sign2@0.7.0:
     resolution: {integrity: sha512-08kcGqnYf/YmjoRhfxyu+CLxBjUtHLXLXX/vUfx9l2LYzG3c1m61nrpyFUZI6zeS+Li/wWMMidD9KgrqtGq3mA==}
 
-  aws4@1.13.1:
-    resolution: {integrity: sha512-u5w79Rd7SU4JaIlA/zFqG+gOiuq25q5VLyZ8E+ijJeILuTxVzZgp2CaGw/UTw6pXYN9XMO9yiqj/nEHmhTG5CA==}
+  aws4@1.13.2:
+    resolution: {integrity: sha512-lHe62zvbTB5eEABUVi/AwVh0ZKY9rMMDhmm+eeyuuUQbQ3+J+fONVQOZyj+DdrvD4BY33uYniyRJ4UJIaSKAfw==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -814,8 +817,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  psl@1.9.0:
-    resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
+  psl@1.15.0:
+    resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -1269,7 +1272,7 @@ snapshots:
 
   aws-sign2@0.7.0: {}
 
-  aws4@1.13.1: {}
+  aws4@1.13.2: {}
 
   balanced-match@1.0.2: {}
 
@@ -1718,7 +1721,9 @@ snapshots:
 
   prettier@3.5.3: {}
 
-  psl@1.9.0: {}
+  psl@1.15.0:
+    dependencies:
+      punycode: 2.3.1
 
   punycode@2.3.1: {}
 
@@ -1747,7 +1752,7 @@ snapshots:
   request@2.88.2:
     dependencies:
       aws-sign2: 0.7.0
-      aws4: 1.13.1
+      aws4: 1.13.2
       caseless: 0.12.0
       combined-stream: 1.0.8
       extend: 3.0.2
@@ -1870,7 +1875,7 @@ snapshots:
 
   tough-cookie@2.5.0:
     dependencies:
-      psl: 1.9.0
+      psl: 1.15.0
       punycode: 2.3.1
 
   tunnel-agent@0.6.0:
